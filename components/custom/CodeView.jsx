@@ -211,7 +211,7 @@ function CodeView() {
           <div className="relative z-10 flex flex-col items-center">
             <div className="flex items-center">
               <Loader2Icon className="animate-spin h-10 w-10 text-primary" />
-              <h2 className="text-foreground ml-3 text-lg font-medium">Generating your AI-powered app... </h2>
+              <h2 className="text-foreground ml-3 text-lg font-medium">Generating your Learning Experience... </h2>
             </div>
             
             
