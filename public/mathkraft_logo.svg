@@ -1,0 +1,17 @@
+<svg width="120" height="40" viewBox="0 0 120 40" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background -->
+  <rect width="120" height="40" fill="#f7f9fc" rx="6"/>
+  
+  <!-- Math symbol accent -->
+  <circle cx="12" cy="20" r="8" fill="#5b8cd4" opacity="0.1"/>
+  <text x="12" y="25" font-family="Arial, sans-serif" font-size="12" font-weight="bold" text-anchor="middle" fill="#5b8cd4">π</text>
+  
+  <!-- MathKraft text -->
+  <text x="28" y="16" font-family="Arial, sans-serif" font-size="14" font-weight="bold" fill="#2c3e50">Math</text>
+  <text x="28" y="30" font-family="Arial, sans-serif" font-size="14" font-weight="bold" fill="#5b8cd4">Kraft</text>
+  
+  <!-- Small decorative elements -->
+  <circle cx="100" cy="12" r="2" fill="#5b8cd4" opacity="0.3"/>
+  <circle cx="108" cy="16" r="1.5" fill="#8fa5bb" opacity="0.5"/>
+  <text x="105" y="30" font-family="Arial, sans-serif" font-size="8" fill="#6b7e93">+</text>
+</svg> 

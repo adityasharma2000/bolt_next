@@ -65,15 +65,15 @@ export default function SignInDialog({ openDialog, closeDialog }) {
       <DialogContent>
         <DialogHeader>
           <DialogTitle className="w-50 h-40 mx-auto">
-            <img src="./volt_logo.webp" alt="" className="bg-red-700" />
+            <img src="./mathkraft_logo.svg" alt="MathKraft Logo" className="mx-auto" width="120" height="40" />
           </DialogTitle>
           <DialogDescription className="text-center text-[15px] font-medium m-8 mx-12">
-            To use Volt you must log into an existing account or create one
+            To use MathKraft you must log into an existing account or create one
             using one of the options below
           </DialogDescription>
           <DialogDescription className="flex flex-col gap-4">
             <Button
-              className="text-white bg-blue-500 hover:bg-blue-600 mx-10"
+              className="bg-primary text-primary-foreground hover:bg-primary/90 mx-10"
               size="lg"
               onClick={() => login()}
             >
@@ -86,11 +86,11 @@ export default function SignInDialog({ openDialog, closeDialog }) {
               Sign in with Google
             </Button>
             <Button
-              className="text-white bg-blue-500 hover:bg-blue-600 mx-10"
+              className="bg-primary text-primary-foreground hover:bg-primary/90 mx-10"
               size="lg"
             >
               <Image
-                src={"/github-mark-white.png"}
+                src={"/icons8-google.png"}
                 alt="github"
                 width={20}
                 height={20}
@@ -103,7 +103,7 @@ export default function SignInDialog({ openDialog, closeDialog }) {
           </DialogDescription>
         </DialogHeader>
         <DialogFooter className="text-center text-[15px] font-medium my-8 mx-12">
-          By using Volt, you agree to the collection of usage data for analytis.
+          By using MathKraft, you agree to the collection of usage data for analytics.
         </DialogFooter>
       </DialogContent>
     </Dialog>

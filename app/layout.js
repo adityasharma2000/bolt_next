@@ -3,14 +3,14 @@ import "./globals.css";
 import Provider from "./Provider";
 
 export const metadata = {
-  title: "Volt",
-  description: "Creted by Dastagir",
+  title: "MathKraft",
+  description: "Discover the joy of math learning with the world's first AI + coach solution",
 };
 
 export default function RootLayout({ children }) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className={` antialiased`}>
+      <body className="antialiased light">
         <ConvexClientProvider>
           <Provider>{children}</Provider>
         </ConvexClientProvider>

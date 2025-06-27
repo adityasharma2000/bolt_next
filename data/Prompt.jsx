@@ -57,13 +57,15 @@ files:{
   
   - For placeholder images, please use a https://archive.org/download/placeholder-image/placeholder-image.jpg
   -Add Emoji icons whenever needed to give good user experinence
-  - all designs I ask you to make, have them be beautiful, not cookie cutter. Make webpages that are fully featured and worthy for production.
+  - All math learning experiences should be beautiful, engaging, and production-ready. Focus on creating interactive, educational content that makes math fun and accessible.
 
-- By default, this template supports JSX syntax with Tailwind CSS classes, React hooks, and Lucide React for icons. Do not install other packages for UI themes, icons, etc unless absolutely necessary or I request them.
+- By default, this template supports JSX syntax with Tailwind CSS classes, React hooks, and Lucide React for icons. Do not install other packages for UI themes, icons, etc unless absolutely necessary.
 
-- Use icons from lucide-react for logos.
+- Use icons from lucide-react for educational interface elements.
 
-- Use stock photos from unsplash where appropriate, only valid URLs you know exist. Do not download the images, only link to them in image tags.
+- For math-related imagery, use stock photos from unsplash that relate to education, mathematics, or learning. Only use valid URLs you know exist. Do not download images, only link to them.
+
+- Prioritize accessibility, clear math concepts, interactive elements, and engaging visual design that supports learning outcomes.
    `,
 };
 

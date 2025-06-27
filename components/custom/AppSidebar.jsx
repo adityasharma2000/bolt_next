@@ -14,10 +14,16 @@ import { useRouter } from "next/navigation";
 import { useContext, useState } from "react";
 import { UserDetailContext } from "@/context/UserDetailContext";
 import clsx from "clsx";
+
 function AppSidebar() {
   const router = useRouter();
-  const { userDetail, setUserDetail } = useContext(UserDetailContext); // Assuming you have a way to get user details from context or props
+  const { userDetail, setUserDetail } = useContext(UserDetailContext);
   const [isHovered, setIsHovered] = useState(false);
+
+  const handleLogoClick = () => {
+    router.push("/");
+  };
+
   return (
     <>
       <div
@@ -31,13 +37,13 @@ function AppSidebar() {
           isHovered ? "translate-x-0" : "-translate-x-full"
         )}
       >
-        <Image
-          src={"/volt_logo.webp"}
-          alt="Logo"
-          width={100}
-          height={100}
-          className="mx-3 mt-[-18px]"
-        />
+        <div 
+          className="flex items-center text-2xl font-bold mx-3 my-3 ml-6 cursor-pointer hover:opacity-80 transition-opacity"
+          onClick={handleLogoClick}
+        >
+          <span className="text-blue-600">Math</span>
+          <span className="text-gray-800">Kraft</span>
+        </div>
         <Button
           className="mx-5  font-medium text-lg "
           onClick={() => router.push("/")}
@@ -70,4 +76,5 @@ function AppSidebar() {
     </>
   );
 }
+
 export default AppSidebar;

@@ -36,7 +36,7 @@ function WorkspaceHistory() {
           <Link href={`/workspace/${workspace._id}`} key={workspace._id}>
             <h2
               onClick={toggleSidebar}
-              className="text-sm text-gray-400 mt-2 font-light hover:text-white cursor-pointer"
+              className="text-sm text-muted-foreground mt-2 font-light hover:text-foreground cursor-pointer"
             >
               {workspace?.messages[0].content}
             </h2>

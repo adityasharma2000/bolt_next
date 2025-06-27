@@ -7,7 +7,7 @@ import { useConvex, useMutation } from "convex/react";
 import { useParams } from "next/navigation";
 import React, { useContext, useEffect } from "react";
 import Image from "next/image";
-import { ArrowRight, Link, Loader2Icon } from "lucide-react";
+import { ArrowRight, Link, Loader2Icon, Bot } from "lucide-react";
 import Lookup from "@/data/Lookup";
 import { useState } from "react";
 import axios from "axios";
@@ -86,41 +86,82 @@ function ChatView() {
 
   return (
     <div className="relative h-[88vh] flex flex-col">
-      {/* user-ai */}
-      <div className="flex-1 overflow-y-scroll pl-5">
+      {/* Chat Messages */}
+      <div className="flex-1 overflow-y-scroll px-4">
         {messages.length > 0 &&
           messages.map((message, index) => (
             <div
               key={index}
-              className="p-3 rounded-lg mb-2 flex gap-2 items-center leading-7"
-              style={{ backgroundColor: Colors.CHAT_BACKGROUND }}
+              className={`mb-4 flex ${
+                message?.role === "user" ? "justify-end" : "justify-start"
+              }`}
             >
-              {message?.role === "user" && (
-                <Image
-                  src={userDetail?.picture}
-                  alt="User"
-                  width={35}
-                  height={35}
-                  className="rounded-full"
-                />
-              )}
-              <div className="flex flex-col">
-                <ReactMarkdown>{message.content}</ReactMarkdown>
+              <div
+                className={`flex gap-3 max-w-[80%] ${
+                  message?.role === "user" ? "flex-row-reverse" : "flex-row"
+                }`}
+              >
+                {/* Avatar/Icon */}
+                <div className="flex-shrink-0">
+                  {message?.role === "user" ? (
+                    <Image
+                      src={userDetail?.picture}
+                      alt="User"
+                      width={35}
+                      height={35}
+                      className="rounded-full"
+                    />
+                  ) : (
+                    <div className="w-[35px] h-[35px] bg-blue-500 rounded-full flex items-center justify-center">
+                      <Bot className="w-5 h-5 text-white" />
+                    </div>
+                  )}
+                </div>
+
+                {/* Message Content */}
+                <div
+                  className={`p-3 rounded-lg leading-7 prose prose-sm max-w-none ${
+                    message?.role === "user"
+                      ? "bg-blue-500 text-white rounded-br-sm"
+                      : "bg-gray-100 text-gray-800 rounded-bl-sm"
+                  }`}
+                  style={
+                    message?.role === "ai"
+                      ? { backgroundColor: Colors.CHAT_BACKGROUND }
+                      : {}
+                  }
+                >
+                  <ReactMarkdown>
+                    {message.content}
+                  </ReactMarkdown>
+                </div>
               </div>
             </div>
           ))}
+        
+        {/* Loading indicator for AI response */}
         {loading && (
-          <div
-            className="p-3 rounded-lg mb-2 flex gap-2 items-center"
-            style={{ backgroundColor: Colors.CHAT_BACKGROUND }}
-          >
-            <Loader2Icon className="animate-spin " />
-            <h2>Generating response...</h2>
+          <div className="mb-4 flex justify-start">
+            <div className="flex gap-3 max-w-[80%]">
+              <div className="flex-shrink-0">
+                <div className="w-[35px] h-[35px] bg-blue-500 rounded-full flex items-center justify-center">
+                  <Bot className="w-5 h-5 text-white" />
+                </div>
+              </div>
+              <div
+                className="p-3 rounded-lg rounded-bl-sm bg-gray-100 flex gap-2 items-center"
+                style={{ backgroundColor: Colors.CHAT_BACKGROUND }}
+              >
+                <Loader2Icon className="animate-spin w-4 h-4" />
+                <span className="text-sm text-gray-600">Generating response...</span>
+              </div>
+            </div>
           </div>
         )}
       </div>
-      {/* input section */}
-      <div className="flex gap-2 items-end pl-5">
+
+      {/* Input section */}
+      <div className="flex gap-2 items-end px-4 py-2">
         {userDetail && (
           <Image
             src={userDetail?.picture}
@@ -131,18 +172,18 @@ function ChatView() {
             onClick={toggleSidebar}
           />
         )}
-        <div className="p-5 border border-gray-800 rounded-xl max-w-xl w-full mt-3">
+        <div className="p-5 border border-border rounded-xl max-w-4xl w-full mt-1 bg-white">
           <div className="flex gap-2">
             <textarea
               value={userInput}
               onChange={(e) => setUserInput(e.target.value)}
               placeholder={Lookup.INPUT_PLACEHOLDER}
-              className="outline-none bg-transparent w-full h-32 max-h-56 resize-none"
+              className="outline-none bg-transparent w-full h-20 max-h-56 resize-none"
             />
             {userInput && (
               <ArrowRight
                 onClick={() => onGenerate(userInput)}
-                className="bg-blue-500 p-2 h-8 w-8 rounded-md cursor-pointer"
+                className="bg-primary p-2 h-8 w-8 rounded-md cursor-pointer"
               />
             )}
           </div>

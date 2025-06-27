@@ -44,71 +44,73 @@
 
 :root {
   --radius: 0.625rem;
-  --background: oklch(1 0 0);
-  --foreground: oklch(0.145 0 0);
-  --card: oklch(1 0 0);
-  --card-foreground: oklch(0.145 0 0);
-  --popover: oklch(1 0 0);
-  --popover-foreground: oklch(0.145 0 0);
-  --primary: oklch(0.205 0 0);
-  --primary-foreground: oklch(0.985 0 0);
-  --secondary: oklch(0.97 0 0);
-  --secondary-foreground: oklch(0.205 0 0);
-  --muted: oklch(0.97 0 0);
-  --muted-foreground: oklch(0.556 0 0);
-  --accent: oklch(0.97 0 0);
-  --accent-foreground: oklch(0.205 0 0);
-  --destructive: oklch(0.577 0.245 27.325);
-  --border: oklch(0.922 0 0);
-  --input: oklch(0.922 0 0);
-  --ring: oklch(0.708 0 0);
-  --chart-1: oklch(0.646 0.222 41.116);
-  --chart-2: oklch(0.6 0.118 184.704);
-  --chart-3: oklch(0.398 0.07 227.392);
-  --chart-4: oklch(0.828 0.189 84.429);
-  --chart-5: oklch(0.769 0.188 70.08);
-  --sidebar: oklch(0.985 0 0);
-  --sidebar-foreground: oklch(0.145 0 0);
-  --sidebar-primary: oklch(0.205 0 0);
-  --sidebar-primary-foreground: oklch(0.985 0 0);
-  --sidebar-accent: oklch(0.97 0 0);
-  --sidebar-accent-foreground: oklch(0.205 0 0);
-  --sidebar-border: oklch(0.922 0 0);
-  --sidebar-ring: oklch(0.708 0 0);
+  /* Soft light blue theme - main colors */
+  --background: oklch(98% 0.005 240); /* Very light blue-tinted white */
+  --foreground: oklch(25% 0.015 240); /* Deep blue-gray for text */
+  --card: oklch(100% 0 0); /* Pure white for cards */
+  --card-foreground: oklch(25% 0.015 240);
+  --popover: oklch(100% 0 0);
+  --popover-foreground: oklch(25% 0.015 240);
+  --primary: oklch(65% 0.15 240); /* Soft blue primary */
+  --primary-foreground: oklch(100% 0 0);
+  --secondary: oklch(94% 0.01 240); /* Very light blue-gray */
+  --secondary-foreground: oklch(35% 0.015 240);
+  --muted: oklch(96% 0.005 240); /* Muted light blue */
+  --muted-foreground: oklch(50% 0.01 240);
+  --accent: oklch(90% 0.02 240); /* Light blue accent */
+  --accent-foreground: oklch(35% 0.015 240);
+  --destructive: oklch(65% 0.15 15); /* Soft red for errors */
+  --border: oklch(88% 0.005 240); /* Light blue border */
+  --input: oklch(92% 0.005 240); /* Input background */
+  --ring: oklch(65% 0.15 240); /* Focus ring - same as primary */
+  --chart-1: oklch(70% 0.12 240); /* Soft blue */
+  --chart-2: oklch(75% 0.10 200); /* Soft cyan */
+  --chart-3: oklch(65% 0.08 280); /* Soft purple */
+  --chart-4: oklch(80% 0.12 180); /* Soft teal */
+  --chart-5: oklch(72% 0.15 220); /* Soft blue-violet */
+  --sidebar: oklch(97% 0.005 240); /* Very light blue sidebar */
+  --sidebar-foreground: oklch(30% 0.015 240);
+  --sidebar-primary: oklch(65% 0.15 240);
+  --sidebar-primary-foreground: oklch(100% 0 0);
+  --sidebar-accent: oklch(93% 0.01 240);
+  --sidebar-accent-foreground: oklch(35% 0.015 240);
+  --sidebar-border: oklch(88% 0.005 240);
+  --sidebar-ring: oklch(65% 0.15 240);
 }
 
 .dark {
-  --background: oklch(0.145 0 0);
-  --foreground: oklch(0.985 0 0);
-  --card: oklch(0.205 0 0);
-  --card-foreground: oklch(0.985 0 0);
-  --popover: oklch(0.205 0 0);
-  --popover-foreground: oklch(0.985 0 0);
-  --primary: oklch(0.922 0 0);
-  --primary-foreground: oklch(0.205 0 0);
-  --secondary: oklch(0.269 0 0);
-  --secondary-foreground: oklch(0.985 0 0);
-  --muted: oklch(0.269 0 0);
-  --muted-foreground: oklch(0.708 0 0);
-  --accent: oklch(0.269 0 0);
-  --accent-foreground: oklch(0.985 0 0);
-  --destructive: oklch(0.704 0.191 22.216);
-  --border: oklch(1 0 0 / 10%);
-  --input: oklch(1 0 0 / 15%);
-  --ring: oklch(0.556 0 0);
-  --chart-1: oklch(0.488 0.243 264.376);
-  --chart-2: oklch(0.696 0.17 162.48);
-  --chart-3: oklch(0.769 0.188 70.08);
-  --chart-4: oklch(0.627 0.265 303.9);
-  --chart-5: oklch(0.645 0.246 16.439);
-  --sidebar: oklch(0.205 0 0);
-  --sidebar-foreground: oklch(0.985 0 0);
-  --sidebar-primary: oklch(0.488 0.243 264.376);
-  --sidebar-primary-foreground: oklch(0.985 0 0);
-  --sidebar-accent: oklch(0.269 0 0);
-  --sidebar-accent-foreground: oklch(0.985 0 0);
-  --sidebar-border: oklch(1 0 0 / 10%);
-  --sidebar-ring: oklch(0.556 0 0);
+  /* Keep dark theme but make it softer */
+  --background: oklch(12% 0.01 240); /* Very dark blue */
+  --foreground: oklch(95% 0.005 240); /* Light blue-white */
+  --card: oklch(18% 0.01 240); /* Dark blue card */
+  --card-foreground: oklch(95% 0.005 240);
+  --popover: oklch(18% 0.01 240);
+  --popover-foreground: oklch(95% 0.005 240);
+  --primary: oklch(75% 0.12 240); /* Brighter soft blue for dark mode */
+  --primary-foreground: oklch(12% 0.01 240);
+  --secondary: oklch(22% 0.01 240);
+  --secondary-foreground: oklch(95% 0.005 240);
+  --muted: oklch(20% 0.01 240);
+  --muted-foreground: oklch(70% 0.005 240);
+  --accent: oklch(25% 0.015 240);
+  --accent-foreground: oklch(95% 0.005 240);
+  --destructive: oklch(70% 0.15 15);
+  --border: oklch(25% 0.01 240);
+  --input: oklch(22% 0.01 240);
+  --ring: oklch(75% 0.12 240);
+  --chart-1: oklch(65% 0.15 240);
+  --chart-2: oklch(70% 0.12 200);
+  --chart-3: oklch(75% 0.10 280);
+  --chart-4: oklch(68% 0.12 180);
+  --chart-5: oklch(72% 0.15 220);
+  --sidebar: oklch(15% 0.01 240);
+  --sidebar-foreground: oklch(95% 0.005 240);
+  --sidebar-primary: oklch(75% 0.12 240);
+  --sidebar-primary-foreground: oklch(12% 0.01 240);
+  --sidebar-accent: oklch(22% 0.01 240);
+  --sidebar-accent-foreground: oklch(95% 0.005 240);
+  --sidebar-border: oklch(25% 0.01 240);
+  --sidebar-ring: oklch(75% 0.12 240);
 }
 
 @layer base {
@@ -118,29 +120,41 @@
   body {
     @apply bg-background text-foreground;
   }
+  
+  /* Force light theme globally */
+  html {
+    background: #f7f9fc !important;
+    color: #2c3e50 !important;
+  }
+  
+  body {
+    background: #f7f9fc !important;
+    color: #2c3e50 !important;
+  }
 }
 
 @layer base {
   :root {
-    --sidebar-background: 0 0% 98%;
-    --sidebar-foreground: 240 5.3% 26.1%;
-    --sidebar-primary: 240 5.9% 10%;
-    --sidebar-primary-foreground: 0 0% 98%;
-    --sidebar-accent: 240 4.8% 95.9%;
-    --sidebar-accent-foreground: 240 5.9% 10%;
-    --sidebar-border: 220 13% 91%;
-    --sidebar-ring: 217.2 91.2% 59.8%;
+    /* Soft blue HSL colors for components that still use HSL */
+    --sidebar-background: 225 25% 97%;
+    --sidebar-foreground: 225 15% 30%;
+    --sidebar-primary: 240 60% 65%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 225 20% 93%;
+    --sidebar-accent-foreground: 225 15% 35%;
+    --sidebar-border: 225 15% 88%;
+    --sidebar-ring: 240 60% 65%;
   }
 
   .dark {
-    --sidebar-background: 240 5.9% 10%;
-    --sidebar-foreground: 240 4.8% 95.9%;
-    --sidebar-primary: 224.3 76.3% 48%;
-    --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 240 3.7% 15.9%;
-    --sidebar-accent-foreground: 240 4.8% 95.9%;
-    --sidebar-border: 240 3.7% 15.9%;
-    --sidebar-ring: 217.2 91.2% 59.8%;
+    --sidebar-background: 225 25% 15%;
+    --sidebar-foreground: 225 10% 95%;
+    --sidebar-primary: 240 60% 75%;
+    --sidebar-primary-foreground: 225 25% 12%;
+    --sidebar-accent: 225 15% 22%;
+    --sidebar-accent-foreground: 225 10% 95%;
+    --sidebar-border: 225 15% 25%;
+    --sidebar-ring: 240 60% 75%;
   }
 }
 
@@ -150,4 +164,48 @@
 .scrollbar-hidden {
   scrollbar-width: none; /* Firefox */
   -ms-overflow-style: none; /* IE and Edge */
+}
+
+/* Sandpack Preview Fixes */
+.sp-wrapper {
+  height: 100% !important;
+}
+
+.sp-preview-container {
+  background: transparent !important;
+}
+
+.sp-preview-iframe {
+  border-radius: 0.375rem;
+  border: 1px solid oklch(88% 0.005 240);
+  background: white;
+  width: 100% !important;
+}
+
+
+/* Ensure proper iframe rendering */
+iframe[src*="sandpack"] {
+  display: block !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+  transform: none !important;
+  border-radius: 0.375rem;
+  background: white;
+}
+
+/* Loading state improvements */
+.sp-preview-container .sp-loading {
+  background: oklch(25% 0.015 240 / 0.9);
+  color: white;
+  border-radius: 0.375rem;
+}
+
+/* Error state improvements */
+.sp-preview-container .sp-overlay {
+  border-radius: 0.375rem;
+}
+
+/* Fix for dark theme preview */
+.dark .sp-preview-iframe {
+  border-color: oklch(25% 0.01 240);
 }

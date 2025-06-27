@@ -8,10 +8,10 @@ export default {
     "Create Quizz App On History",
     "Create Login Signup Screen",
   ],
-  HERO_HEADING: "What do you want to build?",
-  HERO_DESC: "Prompt, run, edit, and deploy full-stack web apps.",
-  INPUT_PLACEHOLDER: "What you want to build?",
-  SIGNIN_HEADING: "Continue With Bolt.New 2.0",
+  HERO_HEADING: "What learning experience do you want to create?",
+  HERO_DESC: "Design, build, and deploy interactive math learning experiences with AI.",
+  INPUT_PLACEHOLDER: "What math learning experience do you want to create?",
+  SIGNIN_HEADING: "Continue With MathKraft",
   SIGNIN_SUBHEADING:
     "To use Bolt you must log into an existing account or create one.",
   SIGNIn_AGREEMENT_TEXT:

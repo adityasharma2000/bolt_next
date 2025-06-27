@@ -26,7 +26,7 @@ function SideBarFooter() {
       {options.map((option, index) => (
         <Button
           key={index}
-          className="w-full justify-start flex bg-black text-white hover:bg-gray-800"
+          className="w-full justify-start flex bg-secondary text-secondary-foreground hover:bg-secondary/80"
           onClick={option?.fun}
         >
           <option.icon />
