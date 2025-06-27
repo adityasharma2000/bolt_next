@@ -7,7 +7,7 @@ import { useConvex, useMutation } from "convex/react";
 import { useParams } from "next/navigation";
 import React, { useContext, useEffect } from "react";
 import Image from "next/image";
-import { ArrowRight, Link, Loader2Icon, Bot } from "lucide-react";
+import { ArrowRight, Link, Loader2Icon } from "lucide-react";
 import Lookup from "@/data/Lookup";
 import { useState } from "react";
 import axios from "axios";
@@ -113,7 +113,7 @@ function ChatView() {
                     />
                   ) : (
                     <div className="w-[35px] h-[35px] bg-blue-500 rounded-full flex items-center justify-center">
-                      <Bot className="w-5 h-5 text-white" />
+                      <span className="text-white text-lg font-bold">∑</span>
                     </div>
                   )}
                 </div>
@@ -145,7 +145,7 @@ function ChatView() {
             <div className="flex gap-3 max-w-[80%]">
               <div className="flex-shrink-0">
                 <div className="w-[35px] h-[35px] bg-blue-500 rounded-full flex items-center justify-center">
-                  <Bot className="w-5 h-5 text-white" />
+                  <span className="text-white text-lg font-bold">∑</span>
                 </div>
               </div>
               <div

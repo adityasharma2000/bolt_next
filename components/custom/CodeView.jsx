@@ -29,7 +29,7 @@ function CodeView() {
   const { messages, setMessages } = useContext(MessagesContext);
   const UpdateFiles = useMutation(api.workspace.UpdateFiles);
   const convex = useConvex();
-  const [loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState(true);
   const { action, setAction } = useContext(ActionContext);
   const [sandpackKey, setSandpackKey] = useState(0); // Force re-render
 
@@ -70,7 +70,7 @@ function CodeView() {
       console.error("Error fetching workspace:", error);
       setFiles(Lookup.DEFAULT_FILE);
     } finally {
-      setLoading(false);
+      setLoading(true);
     }
   };
 
@@ -85,6 +85,17 @@ function CodeView() {
 
   const GenerateAiCode = async () => {
     setLoading(true);
+    
+    // DEMO MODE: Keep loading forever - don't actually generate code
+    console.log("Demo mode: Code generation started but will stay in loading state");
+    
+    // Optional: Add a subtle console message after a few seconds for demo purposes
+    setTimeout(() => {
+      console.log("Demo: Still generating... (this will continue indefinitely)");
+    }, 3000);
+    
+    // Commented out the actual code generation for demo
+    /*
     try {
       const PROMPT =
         messages[messages.length - 1].content + " " + Prompt.CODE_GEN_PROMPT;
@@ -110,6 +121,7 @@ function CodeView() {
     } finally {
       setLoading(false);
     }
+    */
   };
 
   // Memoized tab switching to prevent unnecessary re-renders
@@ -199,8 +211,9 @@ function CodeView() {
           <div className="relative z-10 flex flex-col items-center">
             <div className="flex items-center">
               <Loader2Icon className="animate-spin h-10 w-10 text-primary" />
-              <h2 className="text-foreground ml-3 text-lg font-medium">Generating your files... </h2>
+              <h2 className="text-foreground ml-3 text-lg font-medium">Generating your AI-powered app... </h2>
             </div>
+            
             
             {/* Pulsing Code Icons */}
             <div className="flex gap-4 mt-6">

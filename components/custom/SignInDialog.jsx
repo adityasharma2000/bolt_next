@@ -64,8 +64,8 @@ export default function SignInDialog({ openDialog, closeDialog }) {
     >
       <DialogContent>
         <DialogHeader>
-          <DialogTitle className="w-50 h-40 mx-auto">
-            <img src="./mathkraft_logo.svg" alt="MathKraft Logo" className="mx-auto" width="120" height="40" />
+          <DialogTitle className="text-center text-2xl font-bold">
+            MathKraft
           </DialogTitle>
           <DialogDescription className="text-center text-[15px] font-medium m-8 mx-12">
             To use MathKraft you must log into an existing account or create one

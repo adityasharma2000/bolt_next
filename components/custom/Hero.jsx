@@ -19,6 +19,7 @@ function Hero() {
   const [showContent, setShowContent] = useState(false);
   const [animationComplete, setAnimationComplete] = useState(false);
   const [isMounted, setIsMounted] = useState(false);
+  const [isGenerating, setIsGenerating] = useState(false);
   const CreateWorkspace = useMutation(api.workspace.CreateWorkspace);
   const router = useRouter();
 
@@ -34,7 +35,7 @@ function Hero() {
     // Start showing content after blob animation
     const timer = setTimeout(() => {
       setShowContent(true);
-    }, 3500);
+    }, 4500);
     
     // Complete animation
     const completeTimer = setTimeout(() => {
@@ -52,6 +53,8 @@ function Hero() {
       setOpenDialog(true);
       return;
     }
+    
+    setIsGenerating(true);
     console.log("user hero ", userDetail);
     const msg = { role: "user", content: userInput };
     setMessages(msg);
@@ -66,6 +69,7 @@ function Hero() {
       router.push(`/workspace/${workspaceId}`);
     } catch (error) {
       console.error("Error creating workspace:", error);
+      setIsGenerating(false);
     }
   };
 
@@ -147,12 +151,21 @@ function Hero() {
               onChange={(e) => setUserInput(e.target.value)}
               placeholder={Lookup.INPUT_PLACEHOLDER}
               className="outline-none bg-transparent w-full h-32 max-h-56 resize-none text-gray-800"
+              disabled={isGenerating}
             />
             {userInput && (
-              <ArrowRight
-                onClick={() => onGenerate(userInput)}
-                className="bg-gradient-to-r from-blue-500 to-purple-500 p-2 h-8 w-8 rounded-md cursor-pointer text-white hover:from-blue-600 hover:to-purple-600 transition-all duration-300 hover:scale-110"
-              />
+              <div className="relative">
+                {isGenerating ? (
+                  <div className="bg-gradient-to-r from-blue-500 to-purple-500 p-2 h-8 w-8 rounded-md flex items-center justify-center">
+                    <div className="w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin"></div>
+                  </div>
+                ) : (
+                  <ArrowRight
+                    onClick={() => onGenerate(userInput)}
+                    className="bg-gradient-to-r from-blue-500 to-purple-500 p-2 h-8 w-8 rounded-md cursor-pointer text-white hover:from-blue-600 hover:to-purple-600 transition-all duration-300 hover:scale-110"
+                  />
+                )}
+              </div>
             )}
           </div>
           <div>
