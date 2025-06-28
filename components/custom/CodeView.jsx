@@ -211,9 +211,13 @@ function CodeView() {
           <div className="relative z-10 flex flex-col items-center">
             <div className="flex items-center">
               <Loader2Icon className="animate-spin h-10 w-10 text-primary" />
-              <h2 className="text-foreground ml-3 text-lg font-medium">Generating your Learning Experience... </h2>
+              <h2 className="text-foreground ml-3 text-lg font-medium">Gathering context... </h2>
             </div>
             
+            {/* Loading Bar */}
+            <div className="w-80 mt-6 bg-secondary rounded-full h-2 overflow-hidden border border-border/50">
+              <div className="h-full bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 rounded-full animate-loading-bar-demo" style={{width: '10%'}}></div>
+            </div>
             
             {/* Pulsing Code Icons */}
             <div className="flex gap-4 mt-6">
@@ -283,12 +287,29 @@ function CodeView() {
               }
             }
             
+            @keyframes loading-bar-demo {
+              0% {
+                opacity: 0.6;
+                box-shadow: 0 0 5px rgba(59, 130, 246, 0.3);
+              }
+              50% {
+                opacity: 1;
+                box-shadow: 0 0 10px rgba(59, 130, 246, 0.5);
+              }
+              100% {
+                opacity: 0.6;
+                box-shadow: 0 0 5px rgba(59, 130, 246, 0.3);
+              }
+            }
+            
             .animate-blob-1 { animation: blob-1 5s ease-in-out infinite; }
             .animate-blob-2 { animation: blob-2 5s ease-in-out infinite; }
             .animate-blob-3 { animation: blob-3 5s ease-in-out infinite; }
             .animate-blob-4 { animation: blob-4 5s ease-in-out infinite; }
             .animate-blob-5 { animation: blob-5 5s ease-in-out infinite; }
             .animate-blob-6 { animation: blob-6 5s ease-in-out infinite; }
+            
+            .animate-loading-bar-demo { animation: loading-bar-demo 2s ease-in-out infinite; }
             
             .animation-delay-500 {
               animation-delay: 0.5s;

@@ -5,7 +5,7 @@ import { api } from "@/convex/_generated/api";
 import Colors from "@/data/Colors";
 import { useConvex, useMutation } from "convex/react";
 import { useParams } from "next/navigation";
-import React, { useContext, useEffect } from "react";
+import React, { useContext, useEffect, useRef } from "react";
 import Image from "next/image";
 import { ArrowRight, Link, Loader2Icon } from "lucide-react";
 import Lookup from "@/data/Lookup";
@@ -24,6 +24,16 @@ function ChatView() {
   const [loading, setLoading] = useState(false);
   const UpdateMessages = useMutation(api.workspace.UpdateMessages);
   const { toggleSidebar } = useSidebar();
+  const messagesEndRef = useRef(null);
+
+  // Auto-scroll to bottom when messages change
+  useEffect(() => {
+    scrollToBottom();
+  }, [messages, loading]);
+
+  const scrollToBottom = () => {
+    messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
+  };
 
   useEffect(() => {
     id && GetWorkspaceData();
@@ -87,7 +97,7 @@ function ChatView() {
   return (
     <div className="relative h-[88vh] flex flex-col">
       {/* Chat Messages */}
-      <div className="flex-1 overflow-y-scroll px-4">
+      <div className="flex-1 overflow-y-scroll px-4" id="messages-container">
         {messages.length > 0 &&
           messages.map((message, index) => (
             <div
@@ -153,11 +163,14 @@ function ChatView() {
                 style={{ backgroundColor: Colors.CHAT_BACKGROUND }}
               >
                 <Loader2Icon className="animate-spin w-4 h-4" />
-                <span className="text-sm text-gray-600">Generating response...</span>
+                <span className="text-sm text-gray-600">Thinking...</span>
               </div>
             </div>
           </div>
         )}
+        
+        {/* Invisible element to scroll to */}
+        <div ref={messagesEndRef} />
       </div>
 
       {/* Input section */}

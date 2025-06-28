@@ -1,6 +1,6 @@
 "use client";
 import Lookup from "@/data/Lookup";
-import { ArrowRight, Link } from "lucide-react";
+import { ArrowRight, Upload, Plus, X } from "lucide-react";
 import Image from "next/image";
 import React, { useContext, useEffect, useState } from "react";
 import { MessagesContext } from "@/context/MessagesContext";
@@ -20,8 +20,29 @@ function Hero() {
   const [animationComplete, setAnimationComplete] = useState(false);
   const [isMounted, setIsMounted] = useState(false);
   const [isGenerating, setIsGenerating] = useState(false);
+  
+  // New state for upload and buttons
+  const [uploadedFile, setUploadedFile] = useState(null);
+  const [selectedGrade, setSelectedGrade] = useState(null);
+  const [selectedState, setSelectedState] = useState(null);
+  const [wcagSelected, setWcagSelected] = useState(false);
+  const [showGradeModal, setShowGradeModal] = useState(false);
+  const [showStateModal, setShowStateModal] = useState(false);
+  
   const CreateWorkspace = useMutation(api.workspace.CreateWorkspace);
   const router = useRouter();
+
+  const grades = Array.from({length: 12}, (_, i) => `Grade ${i + 1}`);
+  
+  const usStates = [
+    'Alabama', 'Alaska', 'Arizona', 'Arkansas', 'California', 'Colorado', 'Connecticut', 'Delaware',
+    'Florida', 'Georgia', 'Hawaii', 'Idaho', 'Illinois', 'Indiana', 'Iowa', 'Kansas', 'Kentucky',
+    'Louisiana', 'Maine', 'Maryland', 'Massachusetts', 'Michigan', 'Minnesota', 'Mississippi',
+    'Missouri', 'Montana', 'Nebraska', 'Nevada', 'New Hampshire', 'New Jersey', 'New Mexico',
+    'New York', 'North Carolina', 'North Dakota', 'Ohio', 'Oklahoma', 'Oregon', 'Pennsylvania',
+    'Rhode Island', 'South Carolina', 'South Dakota', 'Tennessee', 'Texas', 'Utah', 'Vermont',
+    'Virginia', 'Washington', 'West Virginia', 'Wisconsin', 'Wyoming'
+  ];
 
   useEffect(() => {
     // Set mounted to true to prevent hydration issues
@@ -47,6 +68,25 @@ function Hero() {
       clearTimeout(completeTimer);
     };
   }, []);
+
+  const handleFileUpload = (event) => {
+    const file = event.target.files[0];
+    if (file && (file.type === 'application/pdf' || file.type.startsWith('image/'))) {
+      setUploadedFile(file);
+    } else {
+      alert('Please upload a PDF or image file');
+    }
+  };
+
+  const handleGradeSelect = (grade) => {
+    setSelectedGrade(grade);
+    setShowGradeModal(false);
+  };
+
+  const handleStateSelect = (state) => {
+    setSelectedState(state);
+    setShowStateModal(false);
+  };
 
   const onGenerate = async (userInput) => {
     if (!userDetail) {
@@ -75,39 +115,45 @@ function Hero() {
 
   const mathGames = [
     {
-      title: "Addition Within 20",
-      description: "Using Ten Frames",
-      gameId: "addition-within-20-using-ten-frames"
+      title: "Common Decimals & Fractions",
+      description: "Learn Decimal & Fraction Equivalents",
+      gameId: "common-decimals-fractions",
+      prompt: "Plan an adventure where the player learns about decimal and fraction equivalents."
+    },
+    {
+      title: "Mixed Numbers to Improper",
+      description: "Convert Mixed to Improper Fractions",
+      gameId: "mixed-number-to-improper-fraction",
+      prompt: "Create a learning experience where players convert mixed numbers to improper fractions."
     },
     {
       title: "Division",
       description: "Master Division Skills",
-      gameId: "division"
+      gameId: "division",
+      prompt: "Teach students to divide numbers using penguins and glaciers."
     },
     {
-      title: "Equivalent Fractions",
-      description: "Learn Equal Fractions",
-      gameId: "equivalent-fractions"
+      title: "Improper Fractions as Mixed",
+      description: "Write Improper Fractions as Mixed Numbers",
+      gameId: "writing-improper-fractions-as-mixed-numbers",
+      prompt: "Create a game where players learn to write improper fractions as mixed numbers using Legos."
     },
     {
-      title: "Mixed Numbers",
-      description: "Write as Improper Fractions",
-      gameId: "writing-mixed-numbers-as-improper-fractions"
+      title: "Addition Within 20",
+      description: "Using Ten Frames",
+      gameId: "addition-within-20-using-ten-frames",
+      prompt: "Design a game inspired by angry birds where students use slingshots to add numbers within 20."
     },
     {
-      title: "Multiplication",
-      description: "With & Without Regrouping",
-      gameId: "multiplying-with-and-without-regrouping"
-    },
-    {
-      title: "Add Fractions",
-      description: "Common Denominator",
-      gameId: "add-fractions-with-common-denominator"
+      title: "2-Digit × 1-Digit",
+      description: "Multiplying with Partial Products",
+      gameId: "multiplying-2-digits-by-1-digit-with-partial-products",
+      prompt: "Generate a game where players learn to multiply 2-digit numbers by 1-digit using partial products."
     }
   ];
 
   const handleGameClick = (gameId) => {
-    window.open(`https://super-artifacts.vercel.app/?game=${gameId}`, '_blank');
+    window.open(`https://games-dev.quazaredu.com/?game=${gameId}`, '_blank');
   };
 
   // Only render animations after component is mounted to prevent hydration errors
@@ -168,8 +214,56 @@ function Hero() {
               </div>
             )}
           </div>
-          <div>
-            <Link />
+          
+          {/* Upload and Selection Buttons Row */}
+          <div className="flex gap-3 mt-4 flex-wrap">
+            {/* Upload Button */}
+            <div className="relative">
+              <input
+                type="file"
+                accept=".pdf,image/*"
+                onChange={handleFileUpload}
+                className="absolute inset-0 w-full h-full opacity-0 cursor-pointer"
+                id="file-upload"
+              />
+              <label
+                htmlFor="file-upload"
+                className="flex items-center gap-2 px-4 py-2 bg-gray-100 hover:bg-gray-200 rounded-full cursor-pointer transition-colors duration-200 text-sm text-gray-700"
+              >
+                <Upload size={16} />
+                {uploadedFile ? uploadedFile.name.substring(0, 20) + (uploadedFile.name.length > 20 ? '...' : '') : 'Upload PDF/Image'}
+              </label>
+            </div>
+
+            {/* Grade Selection Button */}
+            <button
+              onClick={() => setShowGradeModal(true)}
+              className="flex items-center gap-2 px-4 py-2 bg-gray-100 hover:bg-gray-200 rounded-full transition-colors duration-200 text-sm text-gray-700"
+            >
+              <Plus size={16} />
+              {selectedGrade || 'Select a grade'}
+            </button>
+
+            {/* State Standards Selection Button */}
+            <button
+              onClick={() => setShowStateModal(true)}
+              className="flex items-center gap-2 px-4 py-2 bg-gray-100 hover:bg-gray-200 rounded-full transition-colors duration-200 text-sm text-gray-700"
+            >
+              <Plus size={16} />
+              {selectedState || 'Select State Standards'}
+            </button>
+
+            {/* WCAG Guidelines Button */}
+            <button
+              onClick={() => setWcagSelected(!wcagSelected)}
+              className={`px-4 py-2 rounded-full transition-colors duration-200 text-sm ${
+                wcagSelected 
+                  ? 'bg-green-500 text-white' 
+                  : 'bg-gray-100 hover:bg-gray-200 text-gray-700'
+              }`}
+            >
+              Adhere to WCAG 2.2 guidelines
+            </button>
           </div>
         </div>
         
@@ -194,8 +288,8 @@ function Hero() {
                   <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                 </div>
                 <div className="px-6 pt-3 pb-2">
-                  <h4 className="font-semibold text-lg text-gray-800 mb-2 group-hover:text-blue-600 transition-colors duration-300">
-                    {game.title}
+                  <h4 className="font-semibold text-sm text-gray-800 mb-2 group-hover:text-blue-600 transition-colors duration-300">
+                    {game.prompt}
                   </h4>
                 </div>
               </div>
@@ -203,6 +297,62 @@ function Hero() {
           </div>
         </div>
       </div>
+      
+      {/* Grade Selection Modal */}
+      {showGradeModal && (
+        <div className="fixed inset-0 bg-white bg-opacity-20 backdrop-blur-sm flex items-center justify-center z-50">
+          <div className="bg-white rounded-lg p-6 w-full max-w-md mx-4 max-h-96 overflow-y-auto">
+            <div className="flex justify-between items-center mb-4">
+              <h3 className="text-lg font-semibold text-gray-900">Select Grade</h3>
+              <button
+                onClick={() => setShowGradeModal(false)}
+                className="text-gray-400 hover:text-gray-600"
+              >
+                <X size={24} />
+              </button>
+            </div>
+            <div className="grid grid-cols-2 gap-3">
+              {grades.map((grade, index) => (
+                <button
+                  key={index}
+                  onClick={() => handleGradeSelect(grade)}
+                  className="p-3 text-center border border-gray-200 rounded-lg hover:bg-blue-50 hover:border-blue-300 transition-colors duration-200 text-gray-700"
+                >
+                  {grade}
+                </button>
+              ))}
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* State Standards Selection Modal */}
+      {showStateModal && (
+        <div className="fixed inset-0 bg-white bg-opacity-20 backdrop-blur-sm flex items-center justify-center z-50">
+          <div className="bg-white rounded-lg p-6 w-full max-w-md mx-4 max-h-96 overflow-y-auto">
+            <div className="flex justify-between items-center mb-4">
+              <h3 className="text-lg font-semibold text-gray-900">Select State Standards</h3>
+              <button
+                onClick={() => setShowStateModal(false)}
+                className="text-gray-400 hover:text-gray-600"
+              >
+                <X size={24} />
+              </button>
+            </div>
+            <div className="grid grid-cols-1 gap-2">
+              {usStates.map((state, index) => (
+                <button
+                  key={index}
+                  onClick={() => handleStateSelect(state)}
+                  className="p-3 text-left border border-gray-200 rounded-lg hover:bg-blue-50 hover:border-blue-300 transition-colors duration-200 text-gray-700"
+                >
+                  {state}
+                </button>
+              ))}
+            </div>
+          </div>
+        </div>
+      )}
       
       <SignInDialog
         openDialog={openDialog}
