@@ -118,42 +118,70 @@ function Hero() {
       title: "Common Decimals & Fractions",
       description: "Learn Decimal & Fraction Equivalents",
       gameId: "common-decimals-fractions",
-      prompt: "Plan an adventure where the player learns about decimal and fraction equivalents."
+      prompt: "Plan an adventure where the player learns about decimal and fraction equivalents.",
+      baseUrl: "https://games-dev.quazaredu.com/?game="
     },
     {
       title: "Mixed Numbers to Improper",
       description: "Convert Mixed to Improper Fractions",
       gameId: "mixed-number-to-improper-fraction",
-      prompt: "Create a learning experience where players convert mixed numbers to improper fractions."
+      prompt: "Create a learning experience where players convert mixed numbers to improper fractions.",
+      baseUrl: "https://games-dev.quazaredu.com/?game="
     },
     {
       title: "Division",
       description: "Master Division Skills",
       gameId: "division",
-      prompt: "Teach students to divide numbers using penguins and glaciers."
+      prompt: "Teach students to divide numbers using penguins and glaciers.",
+      baseUrl: "https://games-dev.quazaredu.com/?game="
     },
     {
-      title: "Improper Fractions as Mixed",
-      description: "Write Improper Fractions as Mixed Numbers",
-      gameId: "writing-improper-fractions-as-mixed-numbers",
-      prompt: "Create a game where players learn to write improper fractions as mixed numbers using Legos."
+      title: "Spacetime and Special Relativity",
+      description: "Learn about Spacetime and Special Relativity",
+      gameId: "spacetime-and-special-relativity",
+      prompt: "Create a learning experience for IB DP Physics where students learn about spacetime and special relativity.",
+      baseUrl: "https://www.quazaredu.com/concepts/"
     },
     {
       title: "Addition Within 20",
       description: "Using Ten Frames",
       gameId: "addition-within-20-using-ten-frames",
-      prompt: "Design a game inspired by angry birds where students use slingshots to add numbers within 20."
+      prompt: "Design a game inspired by angry birds where students use slingshots to add numbers within 20.",
+      baseUrl: "https://games-dev.quazaredu.com/?game="
     },
     {
       title: "2-Digit × 1-Digit",
       description: "Multiplying with Partial Products",
       gameId: "multiplying-2-digits-by-1-digit-with-partial-products",
-      prompt: "Generate a game where players learn to multiply 2-digit numbers by 1-digit using partial products."
+      prompt: "Generate a game where players learn to multiply 2-digit numbers by 1-digit using partial products.",
+      baseUrl: "https://games-dev.quazaredu.com/?game="
+    },
+    {
+      title: "Improper Fractions as Mixed",
+      description: "Write Improper Fractions as Mixed Numbers",
+      gameId: "writing-improper-fractions-as-mixed-numbers",
+      prompt: "Create a game where players learn to write improper fractions as mixed numbers using Legos.",
+      baseUrl: "https://games-dev.quazaredu.com/?game="
+    },
+    {
+      title: "Vectors",
+      description: "Learn about Vectors",
+      gameId: "vectors",
+      prompt: "Create a learning experience for IB MYP where students learn about vectors.",
+      baseUrl: "https://www.quazaredu.com/concepts/"
+    },
+    {
+      title: "Light and Reflection",
+      description: "Learn about Light and Reflection",
+      gameId: "light-and-reflection",
+      prompt: "Create a learning experience for grade 10 students about light and reflection.",
+      baseUrl: "https://www.quazaredu.com/concepts/"
     }
   ];
 
-  const handleGameClick = (gameId) => {
-    window.open(`https://games-dev.quazaredu.com/?game=${gameId}`, '_blank');
+  const handleGameClick = (game) => {
+    const url = `${game.baseUrl}${game.gameId}`;
+    window.open(url, '_blank');
   };
 
   // Only render animations after component is mounted to prevent hydration errors
@@ -275,7 +303,7 @@ function Hero() {
             {mathGames.map((game, index) => (
               <div
                 key={index}
-                onClick={() => handleGameClick(game.gameId)}
+                onClick={() => handleGameClick(game)}
                 className="bg-white/90 backdrop-blur-sm border border-gray-200 rounded-xl overflow-hidden cursor-pointer transform transition-all duration-300 hover:scale-105 hover:shadow-2xl hover:border-blue-300 group"
               >
                 <div className="relative h-48 w-full overflow-hidden">

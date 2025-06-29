@@ -9,7 +9,7 @@ export default {
     "Create Login Signup Screen",
   ],
   HERO_HEADING: "What learning experience do you want to create?",
-  HERO_DESC: "Design, build, and deploy interactive math learning experiences with AI.",
+  HERO_DESC: "Design, build, and deploy interactive learning experiences with AI.",
   INPUT_PLACEHOLDER: "What math learning experience do you want to create?",
   SIGNIN_HEADING: "Continue With MathKraft",
   SIGNIN_SUBHEADING:
