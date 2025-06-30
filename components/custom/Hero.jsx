@@ -131,7 +131,7 @@ function Hero() {
     {
       title: "Division",
       description: "Master Division Skills",
-      gameId: "division",
+      gameId: "division-v2",
       prompt: "Teach students to divide numbers using penguins and glaciers.",
       baseUrl: "https://games-dev.quazaredu.com/?game="
     },
